@@ -1,16 +1,14 @@
 #IMPORTS PHOTOS FROM AN SHOW PHOTO ALBUM AND SAVES THEM TO A DIRECTORY
 
 
-import sys
 import requests
 from bs4 import BeautifulSoup
-from lxml import etree
-import itertools
 import re
 from urllib.request import urlopen
 import os
 from pathlib import Path
 from selenium import webdriver
+from security import safe_requests
 
 home="http://x.yupoo.com"
 page=requests.get('http://boost.x.yupoo.com/albums?tab=gallery')
@@ -69,7 +67,7 @@ def CreateTitle(string):
     return endstring
 
 def CustomSoup(page):
-    dataurl=requests.get(page)
+    dataurl=safe_requests.get(page)
     data=BeautifulSoup(dataurl.text,'html.parser')
     return data
 

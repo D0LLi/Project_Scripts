@@ -13,7 +13,7 @@ from pathlib import Path
 from selenium import webdriver
 
 home="http://x.yupoo.com"
-page=requests.get('http://boost.x.yupoo.com/albums?tab=gallery')
+page=requests.get('http://boost.x.yupoo.com/albums?tab=gallery', timeout=60)
 page2="http://boost.x.yupoo.com/albums?tab=gallery"
 
 
@@ -69,7 +69,7 @@ def CreateTitle(string):
     return endstring
 
 def CustomSoup(page):
-    dataurl=requests.get(page)
+    dataurl=requests.get(page, timeout=60)
     data=BeautifulSoup(dataurl.text,'html.parser')
     return data
 

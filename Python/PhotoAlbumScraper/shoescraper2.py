@@ -11,6 +11,7 @@ from urllib.request import urlopen
 import os
 from pathlib import Path
 from selenium import webdriver
+from security import safe_requests
 
 home="http://x.yupoo.com"
 page=requests.get('http://boost.x.yupoo.com/albums?tab=gallery')
@@ -69,7 +70,7 @@ def CreateTitle(string):
     return endstring
 
 def CustomSoup(page):
-    dataurl=requests.get(page)
+    dataurl=safe_requests.get(page)
     data=BeautifulSoup(dataurl.text,'html.parser')
     return data
 
